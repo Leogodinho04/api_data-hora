@@ -1,0 +1,26 @@
+{
+  "name": "api_data-hora",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "api_data-hora.js",
+  "scripts": {
+    "start": "node api_data-hora.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": { 
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leogodinho04/api_data-hora.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Leogodinho04/api_data-hora/issues"
+  },
+  "homepage": "https://github.com/Leogodinho04/api_data-hora#readme",
+  "description": ""
+}
