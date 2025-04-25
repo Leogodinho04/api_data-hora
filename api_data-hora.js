@@ -4,18 +4,10 @@ import cors from 'cors';
 const app = express();
 app.use(cors());
 
-// Rota raiz (OBRIGATÓRIA para acessar o link do Render)
-app.get('/', (req, res) => {
-  res.json({ 
-    mensagem: "API no ar!",
-    data: new Date().toLocaleString('pt-BR') 
-  });
-});
-
-// Outras rotas (exemplo)
-app.get('/api/data-hora', (req, res) => {
+// Configurações de formatação (reutilizável)
+const formatarDataHora = () => {
   const options = {
-    timeZone: 'America/Sao_Paulo', // Fuso horário do Brasil
+    timeZone: 'America/Sao_Paulo',
     hour12: false,
     year: 'numeric',
     month: '2-digit',
@@ -24,9 +16,22 @@ app.get('/api/data-hora', (req, res) => {
     minute: '2-digit',
     second: '2-digit'
   };
-  
-  const dataFormatada = new Date().toLocaleString('pt-BR', options);
-  res.json({ data: dataFormatada });
+  return new Date().toLocaleString('pt-BR', options);
+};
+
+// Rota raiz
+app.get('/', (req, res) => {
+  res.json({ 
+    mensagem: "API no ar!",
+    data: formatarDataHora() // Usa a função formatada
+  });
+});
+
+// Rota /api/data-hora
+app.get('/api/data-hora', (req, res) => {
+  res.json({ 
+    data: formatarDataHora() // Usa a mesma função
+  });
 });
 
 const PORT = process.env.PORT || 10000;
