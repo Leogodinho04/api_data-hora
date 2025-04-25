@@ -14,7 +14,19 @@ app.get('/', (req, res) => {
 
 // Outras rotas (exemplo)
 app.get('/api/data-hora', (req, res) => {
-  res.json({ data: new Date().toLocaleString('pt-BR') });
+  const options = {
+    timeZone: 'America/Sao_Paulo', // Fuso horário do Brasil
+    hour12: false,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+  };
+  
+  const dataFormatada = new Date().toLocaleString('pt-BR', options);
+  res.json({ data: dataFormatada });
 });
 
 const PORT = process.env.PORT || 10000;
